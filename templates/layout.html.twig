@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {# pour changer la favicon avec un asset #}
+    <link rel="icon" type="image/gif" href="{{ asset('img/favicon.ico') }}" />
+{#    <link rel="stylesheet" href="{{ asset('css/style.css') }}">#}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/style.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            {# affichage du logo et d'une legende au survol dans le header #}
+            <a class="site-title" href="{{ path('app_home') }}" title="Bucket-List | Home">
+                <img src="{{ asset('img/logo-bucket-list.png') }}" alt="logo">
+            </a>
+
+            {# pour afficher la date du jour selon le format souhaité #}
+            <p>{{ "now"|date("d/m/Y") }}</p>
+        </div>
+    </header>
+    <nav>
+        {# le lien pour retourner sur une page precise #}
+        <a href="{{ url('app_home') }}">Accueil</a>
+        <a href="{{ url('app_about_us') }}">About Us</a>
+        <a href="{{ url('app_list') }}">Liste des idées</a>
+    </nav>
+    {% block main %}
+
+    {% endblock %}
+
+    <footer>
+        <h6>Copyright ® Bucket List ~ 2022</h6>
+    </footer>
+</body>
+</html>
