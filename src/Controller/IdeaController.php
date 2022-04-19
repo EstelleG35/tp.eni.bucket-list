@@ -22,7 +22,7 @@ class IdeaController extends AbstractController
         //on trie les différents titres d'idées selon leur dates de publication, du plus récent au plus ancien.
         $ideas = $ideaRepo->findBy([],['dateCreated' => "DESC"]);
 
-        // on envoie les données à twig
+        // on envoie les données à twig.
         return $this->render('idea/list.html.twig', [
             'ideas' => $ideas
         ]);
