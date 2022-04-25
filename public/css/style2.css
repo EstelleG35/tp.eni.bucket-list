@@ -1,0 +1,97 @@
+/* HEADER */
+#mainNav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #212529;
+}
+
+.img-menu-burger{
+    height: 30px;
+}
+
+header.masthead {
+    padding-top: 10.5rem;
+    padding-bottom: 6rem;
+    text-align: center;
+
+    color: #fff;
+    min-height: 600px;
+
+    background-image: url('../assets/img/background-black.png');
+    background-repeat: no-repeat;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+}
+
+.masthead .container{
+    margin-top: 100px;
+}
+
+/* présentation */
+#btn-list{
+    margin-top: 1%;
+    background-color: white;
+    border-color: white;
+    color: #1a2028;
+}
+
+/* BODY */
+/* enlever le soulignement des titres d'idées de choses à faire */
+a:-webkit-any-link{
+    text-decoration: none;
+}
+.tableau-idees{
+    margin: 3%;
+}
+.tableau-idees a{
+    color: #1a2028;
+}
+.tableau-idees a:hover{
+    background-color: #212529;
+    border-radius: 10px 10px;
+    color: #FFFFFF;
+    padding: 5px;
+
+}
+
+/* DETAIL*/
+.titre-idee{
+    text-align: center;
+    margin: 4%;
+}
+.description-idee .blockquote{
+    text-align: justify;
+}
+.description-idee .blockquote-footer{
+    margin: 2%;
+}
+.description-idee{
+    margin: 5%;
+}
+
+/* ABOUT US*/
+.aboutUs{
+    margin: 3%;
+    text-align: justify;
+}
+
+/* FOOTER */
+#icons-reseaux a{
+    border-radius: 10px 10px;
+
+}
+#icons-reseaux img{
+
+    width: 50px;
+    border-radius: 10px 10px;
+}
+
+.doc{
+    display: flex;
+    justify-content: space-around;
+}

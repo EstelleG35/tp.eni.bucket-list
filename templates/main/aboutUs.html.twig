@@ -1,0 +1,26 @@
+{%  extends "layout.html.twig" %}
+
+{%  block content_header %}
+    <div class="masthead-subheading">Oh..</div>
+    <div class="masthead-heading text-uppercase">.. c'est nous !</div>
+    <a class="btn btn-primary btn-xl text-uppercase display-6" id="btn-list" href="{{ url('app_list') }}">THE liste</a>
+{% endblock %}
+
+{%  block main %}
+    <h2 class="display-4 titre-idee">About Us</h2>
+    <div class="description-idee">
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate.
+                    Voluptatum ducimus voluptates voluptas?</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                By Estelle, le 17.10.2020.
+            </figcaption>
+        </figure>
+    </div>
+
+{% endblock %}

@@ -1,17 +1,25 @@
 {%  extends "layout.html.twig" %}
+{%  block content_header %}
+    <div class="masthead-subheading">Voilà THE liste..</div>
+    <div class="masthead-heading text-uppercase">.. des choses à faire avant de mourir !</div>
 
+{% endblock %}
 {%  block main %}
 
-        <div>
-            <table>
-                <tr>
-                    <th>Titre</th>
-                </tr>
-                {% for idea in ideas %}
+        <div class="tableau-idees">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td> <a href="{{ path('app_detail',{id:idea.id })}}">{{ idea.title }}</a> </td>
+                        <th scope="col">Titre</th>
                     </tr>
-                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for idea in ideas %}
+                        <tr>
+                            <td colspan="2"> <a href="{{ path('app_detail',{id:idea.id })}}">{{ idea.title }}</a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
 

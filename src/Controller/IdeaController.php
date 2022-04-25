@@ -39,4 +39,12 @@ class IdeaController extends AbstractController
             'idea' => $idea
         ]);
     }
+
+    /**
+     * @Route("/idea/creerIdee", name="app_creer_idee")
+     */
+    public function add(Idea $idea): Response
+    {
+        return $this->render();
+    }
 }
