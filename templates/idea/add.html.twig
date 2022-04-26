@@ -1,0 +1,45 @@
+{%  extends "layout.html.twig" %}
+
+{%  block content_header %}
+    <div class="masthead-subheading">C'est parti pour ..</div>
+    <div class="masthead-heading text-uppercase">.. rallonger la liste !</div>
+    <a class="btn btn-primary btn-xl text-uppercase display-6" id="btn-list" href="{{ url('app_list') }}">THE liste</a>
+{% endblock %}
+
+{%  block main %}
+
+    <div class="text-center">
+        {{ form_start(form) }}
+            <h2 class="display-4 titre-idee">Ajouter une idée de chose à faire avant de mourir</h2>
+            <div class="form-creer-idea">
+
+                <div class="align-items-center">
+                    <p class="form-label"> {{ form_label(form.title) }} </p>
+                    <p class="form-widget"> {{ form_widget(form.title) }} </p>
+                </div>
+                <div class="align-items-center">
+                    <p class="form-label"> {{ form_label(form.description) }} </p>
+                    <p class="form-widget"> {{ form_widget(form.description) }} </p>
+                </div>
+                <div class="align-items-center">
+                    <p class="form-label"> {{ form_label(form.category) }} </p>
+                    <p class="form-widget"> {{ form_widget(form.category) }} </p>
+                </div>
+                <div class="align-items-center">
+                    <p class="form-label"> {{ form_label(form.author) }} </p>
+                    <p class="form-widget"> {{ form_widget(form.author) }} </p>
+                </div>
+                <div class="align-items-center">
+                    <p class="form-label">Le {{ idea.dateCreated|date('d.m.Y') }}.</p>
+                </div>
+                <div class="align-items-center">
+                    <button type="submit" method="POST" class="btn btn-dark btn-social mx-2" id="btn-add-idea" href={{ path('app_home') }}>Créer</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+
+
+    </div>
+
+{% endblock %}

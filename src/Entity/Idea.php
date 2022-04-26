@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\IdeaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=IdeaRepository::class)
  */
 class Idea
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -18,29 +21,49 @@ class Idea
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Ce titre n'est pas valide")
+     * @Assert\Length(
+     *     min="10", max="255",
+     *     minMessage="10 caractères minim SVP !",
+     *     maxMessage="255 caractères maximum SVP !"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     *  @Assert\NotBlank(message="La description n'est pas valide")
+     * @Assert\Length(
+     *     min="40", max="600",
+     *     minMessage="40 caractères minim SVP !",
+     *     maxMessage="600 caractères maximum SVP !"
+     * )
      * @ORM\Column(type="string", length=600)
      */
     private $description;
 
     /**
+     * @Assert\NotBlank(message="Ce nom n'est pas valide")
+     * @Assert\Length(
+     *     min="2", max="255",
+     *     minMessage="2 caractères minim SVP !",
+     *     maxMessage="255 caractères maximum SVP !"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $author;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isPublished;
 
     /**
      * @ORM\Column(type="date")
      */
     private $dateCreated;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="ideas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -83,18 +106,6 @@ class Idea
         return $this;
     }
 
-    public function getIsPublished(): ?bool
-    {
-        return $this->isPublished;
-    }
-
-    public function setIsPublished(bool $isPublished): self
-    {
-        $this->isPublished = $isPublished;
-
-        return $this;
-    }
-
     public function getDateCreated(): ?\DateTimeInterface
     {
         return $this->dateCreated;
@@ -103,6 +114,18 @@ class Idea
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
         $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Idea;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +16,19 @@ class CreerIdeeType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', TextareaType::class, [
+                'required' => true,
+                'attr' => array('rows' => '5','cols' => '40'),
+            ])
+            ->add('category', EntityType::class,[
+                'class'=>Category::class,
+                'choice_label'=>'name',
+                'placeholder'=>'-- Choisir --',
+                ])
             ->add('author')
-            ->add('isPublished')
-            ->add('dateCreated')
+
+            ->getForm();
+
         ;
     }
 

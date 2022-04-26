@@ -1,10 +1,15 @@
+body{
+    margin: 10% 10%;
+}
 /* HEADER */
 #mainNav {
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: #212529;
 }
-
+/*.margin-menu{*/
+/*    margin-left: 20%;*/
+/*}*/
 .img-menu-burger{
     height: 30px;
 }
@@ -78,6 +83,15 @@ a:-webkit-any-link{
 .aboutUs{
     margin: 3%;
     text-align: justify;
+}
+
+/* CREER UNE IDEE*/
+.form-creer-idea{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#btn-add-idea{
+    margin-top: 5%;
 }
 
 /* FOOTER */
