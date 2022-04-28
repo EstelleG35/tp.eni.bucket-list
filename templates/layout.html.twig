@@ -35,8 +35,15 @@
                         {# le lien pour retourner sur une page precise #}
                         <li class="nav-item"><a class="nav-link" href="{{ url('app_home') }}">Accueil</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('app_about_us') }}">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link"href="{{ url('app_list') }}">Liste des idées</a></li>
-                        <li class="nav-item"><a class="nav-link"href="{{ url('app_creer_idee') }}">Créer une idée</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('app_list') }}">Liste des idées</a></li>
+                        {#                        {% if is_not_granted('ROLE_USER') %}#}
+                        <li class="nav-item"><a class="nav-link" href="{{ url('app_register') }}">S'inscrire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('app_login') }}">Connexion</a></li>
+                        {#                        {% endif %}#}
+                        {% if is_granted('ROLE_USER') %}
+                            <li class="nav-item"><a class="nav-link" href="{{ url('app_creer_idee') }}">Créer une idée</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('app_logout') }}">Déconnexion</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

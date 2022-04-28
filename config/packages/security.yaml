@@ -1,18 +1,41 @@
 security:
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    #comment sont hachés nos mdp ?
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User: # pour cette entité..
+            algorithm: auto # on utilise l'algo par défaut
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    # d'où viennent nos users ?
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider: # un nom unique
+            entity: #nos users sont en bdd
+                class: App\Entity\User # c'est cette entité là
+                property: username # représentée par cette propriété là
+
+    #activation du système de sécurité
     firewalls:
+        #permet de désactiver sur la debug toolbar, le profiler, etc..
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        # notre pare-feu principal, activé partout par défaut
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
+            custom_authenticator: App\Security\SecurityAuthenticator
+
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            remember_me:
+                secret: '%kernel.secret%' # required
+                lifetime: 60000 # 1 week in seconds
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -22,6 +45,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    # autorisations
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
