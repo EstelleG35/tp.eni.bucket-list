@@ -17,12 +17,15 @@
                 <thead>
                     <tr>
                         <th scope="col">Titre</th>
+                        <th scope="col">Category</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for idea in ideas %}
                         <tr>
                             <td colspan="2"> <a href="{{ path('app_detail',{id:idea.id })}}">{{ idea.title }}</a> </td>
+                            <td colspan="2"> <a href="{{ path('app_detail',{id:idea.id })}}">{{ idea.category.name }}</a> </td>
+                            <td colspan="2"> <a href="{{ path('app_detail',{id:idea.id })}}">{{ idea.category.id }}</a> </td>
                         </tr>
                     {% endfor %}
                 </tbody>
